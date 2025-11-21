@@ -1,3 +1,4 @@
+library(tidyr)
 library(dplyr)
 library(tidyverse)
 library(readxl)
@@ -11,7 +12,8 @@ str(datos)
 
 # Gráfico de barras para variables categóricas
 # Reemplaza 'variable_interes' con el nombre real de tu columna
-print(ggplot(datos, aes(x = nombre_de_tu_variable)) + 
+print(ggplot(datos, aes(x = "CUADRO 25: NÚMERO DE SINIESTROS POR TIPO Y CLASE DE SINIESTRO/1, SEGÚN REGIÓN, 2024", y= 20
+)) + 
   geom_bar() +
   theme_minimal())
 

@@ -1,3 +1,4 @@
+library(tidyr)
 library(dplyr) 
 library(readxl)
 datos <- read_excel("my_data.xlsx")  # o read_excel() si es Excel
