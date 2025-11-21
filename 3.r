@@ -2,18 +2,30 @@ library(tidyr)
 library(dplyr)
 library(tidyverse)
 library(readxl)
+library(GGally)
+library(psych)
 
 datos <- read_excel("my_data.xlsx")
-datos <- datos %>% drop_na()
-datos <- datos %>% mutate(across(where(is.character), as.factor))
+convert_to_smart_factor <- function(df, threshold = 15) {
+  df %>%
+    mutate(across(where(is.character), 
+                  ~ {
+                    unique_vals <- unique(.)
+                    if(length(unique_vals) <= threshold && 
+                       length(unique_vals) > 1) {
+                      as.factor(.)
+                    } else {
+                      .
+                    }
+                  }))
+}
 
-# Ver estructura
-str(datos)
+datos <- convert_to_smart_factor(datos)
 
-# Gráfico de barras para variables categóricas
-# Reemplaza 'variable_interes' con el nombre real de tu columna
-print(ggplot(datos, aes(x = "CUADRO 25: NÚMERO DE SINIESTROS POR TIPO Y CLASE DE SINIESTRO/1, SEGÚN REGIÓN, 2024"
+
+print(ggplot(datos, aes(x = "Región"
 )) + 
-  geom_bar() +
-  theme_minimal())
+  geom_bar(data = data.frame(x="Región", y=50),
+         aes(x = x, y = y),
+         stat = "identity"))
 
