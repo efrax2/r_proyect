@@ -12,7 +12,7 @@ str(datos)
 
 # Gráfico de barras para variables categóricas
 # Reemplaza 'variable_interes' con el nombre real de tu columna
-print(ggplot(datos, aes(x = "CUADRO 25: NÚMERO DE SINIESTROS POR TIPO Y CLASE DE SINIESTRO/1, SEGÚN REGIÓN, 2024", y= 20
+print(ggplot(datos, aes(x = "CUADRO 25: NÚMERO DE SINIESTROS POR TIPO Y CLASE DE SINIESTRO/1, SEGÚN REGIÓN, 2024"
 )) + 
   geom_bar() +
   theme_minimal())
